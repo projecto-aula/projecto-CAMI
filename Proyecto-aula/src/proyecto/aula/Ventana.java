@@ -35,7 +35,7 @@ public class Ventana extends JFrame{
         this.setLocationRelativeTo(null);//Para ponerla en el centro de la pantallla
         ProPanel panel = new Panel_Default();
         this.add(panel);
-        
+        panel.Dibujar();
     }
     
     /*Esta es un metodo importante, pues nos permite establecer un panel 
