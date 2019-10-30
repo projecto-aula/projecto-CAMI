@@ -24,23 +24,18 @@ public class Panel_Default extends ProPanel{
     //Establesco un boton como una prueba
     JButton subir = new JButton("Seguir");
     private final int ancho = 800, largo = 600;
-    ActionListener escuchadorBotones;
+    //ActionListener escuchadorBotones;
     /*Este es el constructor del panel
     aqui se van a agregar algunos valores por defecto
     para el panel
     */
     Panel_Default(){
-        this.escuchadorBotones = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                
-            }
-        };
+        
         this.setLayout(new GridLayout(2, 2));
         this.setSize(ancho, largo);
-        this.setMinimumSize(new Dimension(300, 200));
+        //this.setMinimumSize(new Dimension(300, 200));
         //subir.setSize(100, 40);
-        subir.addActionListener(escuchadorBotones);
+        //subir.addActionListener(escuchadorBotones);
         this.setBackground(Color.red);
     }
     

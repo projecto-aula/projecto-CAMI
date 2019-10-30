@@ -13,7 +13,7 @@ import java.awt.GridLayout;
  * @author Equipo
  */
 
-/*Este */
+/*Esta clase es otra case de tipo propanel */
 public class Panel_Menu extends ProPanel{
     Panel_Menu(){
         this.setLayout(new GridLayout(2, 2));

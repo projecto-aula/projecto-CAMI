@@ -6,7 +6,7 @@
 package proyecto.aula;
 
 import java.awt.Dimension;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 /**
  *
@@ -20,7 +20,7 @@ a nuestro gusto*/
 public class Ventana extends JFrame{
     private String titulo;
     private final int ancho = 800, largo = 600;
-    private Panel_Default pan = new Panel_Default();
+    
     //Es un contructor vacio de la clase
     Ventana(){
         
@@ -33,17 +33,21 @@ public class Ventana extends JFrame{
         this.setResizable(false);//Para que no pueda cambiar de tamano
         this.setSize(ancho, largo);//Establecemos tamano
         this.setLocationRelativeTo(null);//Para ponerla en el centro de la pantallla
-        this.add(pan);//Anadimos el panel
-        pan.Dibujar();
+        ProPanel panel = new Panel_Default();
+        this.add(panel);
         
     }
     
     /*Esta es un metodo importante, pues nos permite establecer un panel 
     en especifico para cambiar de paneles y cambiar de escenas, unicamente 
-    se necesita poner un panel como argumento*/
+    se necesita poner un panel como argumento
+    */
     public void setEscena(ProPanel panel){
+        this.removeAll();
         this.add(panel);
+        
     }
+    
     
     /*Aqui en adelante son los getters and setters de la clase*/
     public String getTitulo() {
