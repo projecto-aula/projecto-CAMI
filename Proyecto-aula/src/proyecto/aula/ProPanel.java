@@ -17,7 +17,7 @@ Es una clase que se necesita agregar a la ventana para agregar metodos.
 Es una clase abstracta por que vamos a manejar muchos tipos de paneles*/
 abstract public class ProPanel extends JPanel{
     
-    private final int ancho = 800, largo = 600;
+    //private final int ancho = 800, largo = 600;
     
     /*Se establecen valores por defecto en el constructor*/
     ProPanel(){
