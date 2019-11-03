@@ -5,6 +5,7 @@
  */
 package proyecto.aula;
 
+import java.awt.Graphics2D;
 import javax.swing.*;
 
 /**
@@ -20,13 +21,13 @@ abstract public class ProPanel extends JPanel{
     //private final int ancho = 800, largo = 600;
     
     /*Se establecen valores por defecto en el constructor*/
-    ProPanel(){
+    public ProPanel(){
         
     }
     
     //Este metodo abstracto nos ayudara a anadir objetos y demas elementos a
     //Nustra ventana
-    public void Dibujar(){
+    public void Dibujar(Graphics2D g){
         
     }
     

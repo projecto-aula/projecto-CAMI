@@ -7,6 +7,7 @@ package proyecto.aula;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,6 +34,7 @@ public class Panel_Default extends ProPanel{
     JButton regristro = new JButton("Resgristrar");
     private final int ancho = 800, largo = 600;
     ActionListener escuchadorBotones;
+    
     /*Este es el constructor del panel
     aqui se van a agregar algunos valores por defecto
     para el panel
@@ -72,7 +74,7 @@ public class Panel_Default extends ProPanel{
      * que se van a mostrar en el panel
      */
     @Override
-    public void Dibujar(){
+    public void Dibujar(Graphics2D g){
         Nombre();//Agregamos caracteristicas de dichos objetos del metodo
         Contrasenna();
         Regristro();

@@ -5,11 +5,12 @@
  */
 package proyecto.aula;
 
+import proyecto.aula.Graficas.Panel_Graficas;
 import javax.swing.JFrame;
 
 /**
  *
- * @author familia
+ * @author Equipo 4
  */
 public class ProyectoAula {
 
@@ -18,8 +19,9 @@ public class ProyectoAula {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Ventana vent = new Ventana("AMI v1.0.0");
+        Ventana vent = new Ventana("CAMI v1.0.0");
         vent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //vent.setEscena(new Panel_Graficas());
         vent.setVisible(true);
     }
     

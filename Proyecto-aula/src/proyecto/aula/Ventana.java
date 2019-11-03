@@ -6,6 +6,9 @@
 package proyecto.aula;
 
 import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Toolkit;
+import proyecto.aula.Graficas.Panel_Graficas;
 import javax.swing.*;
 
 /**
@@ -16,7 +19,8 @@ import javax.swing.*;
 /*Esta es la clase ventana esta es una de las importantes
 pue snos permite elborar una ventana, es una extension de JFrame.
 Es asi por que podemos sobrecargas metodos de la clase original, y manipularla
-a nuestro gusto*/
+a nuestro gusto.Solo vamos a cambiar de paneles con el metodo setEscena 
+Por ende solo vamos a tenr una sola ventana*/
 public class Ventana extends JFrame{
     private String titulo;
     private final int ancho = 800, largo = 600;
@@ -30,22 +34,26 @@ public class Ventana extends JFrame{
     //de la clase
     Ventana(String titulo){
         this.setTitle(titulo);
-        this.setResizable(false);//Para que no pueda cambiar de tamano
+        this.setResizable(true);//Para que no pueda cambiar de tamano
         this.setSize(ancho, largo);//Establecemos tamano
         this.setLocationRelativeTo(null);//Para ponerla en el centro de la pantallla
-        ProPanel panel = new Panel_Default();
+        this.setMinimumSize(new Dimension(690, 400));
+        Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/imagenes/icono.png"));//LLamamos al icono 
+        setIconImage(image); //Establecemos el icono del programa
+        Panel_Graficas panel = new Panel_Graficas();
         this.add(panel);
-        panel.Dibujar();
     }
     
     /*Esta es un metodo importante, pues nos permite establecer un panel 
     en especifico para cambiar de paneles y cambiar de escenas, unicamente 
-    se necesita poner un panel como argumento
+    se necesita poner un panel como argumento, de ahora en adelante no es necsario crear 
+    una vantana, basta con crear el panel con sus respectivos elementos
     */
     public void setEscena(ProPanel panel){
         this.removeAll();
         this.add(panel);
-        
+        this.repaint();
+        this.revalidate();
     }
     
     

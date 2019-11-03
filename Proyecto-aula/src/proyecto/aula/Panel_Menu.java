@@ -6,6 +6,7 @@
 package proyecto.aula;
 
 import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 
 /**
@@ -26,7 +27,7 @@ public class Panel_Menu extends ProPanel{
      * que se van a mostrar en el panel
      */
     @Override
-    public void Dibujar(){
+    public void Dibujar(Graphics2D g){
         //this.add(subir);
     }
 }
