@@ -21,7 +21,7 @@ import javax.swing.*;
 /*Esta es la clase de panel que vendra por default para cualquier ventana.
 Esta clase es una extension de Propanel, por lo cual ya nos ayudara a 
 instanciar objetos. Viene con objetos incluidos*/
-public class Panel_Default extends ProPanel{
+public class Panel_Default extends Panel_Base{
     //Establesco un boton como una prueba
     JButton subir = new JButton("Ingresar");
     

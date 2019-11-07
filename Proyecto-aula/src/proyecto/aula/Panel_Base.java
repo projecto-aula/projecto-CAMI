@@ -16,12 +16,12 @@ import javax.swing.*;
 /*Esta clase nos permite utilizar panel para nuestro programa
 Es una clase que se necesita agregar a la ventana para agregar metodos.
 Es una clase abstracta por que vamos a manejar muchos tipos de paneles*/
-abstract public class ProPanel extends JPanel{
+abstract public class Panel_Base extends JPanel{
     
     //private final int ancho = 800, largo = 600;
     
     /*Se establecen valores por defecto en el constructor*/
-    public ProPanel(){
+    public Panel_Base(){
         
     }
     

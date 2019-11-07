@@ -49,7 +49,7 @@ public class Ventana extends JFrame{
     se necesita poner un panel como argumento, de ahora en adelante no es necsario crear 
     una vantana, basta con crear el panel con sus respectivos elementos
     */
-    public void setEscena(ProPanel panel){
+    public void setEscena(Panel_Base panel){
         this.removeAll();
         this.add(panel);
         this.repaint();

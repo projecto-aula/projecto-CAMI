@@ -15,7 +15,7 @@ import java.awt.GridLayout;
  */
 
 /*Esta clase es otra case de tipo propanel */
-public class Panel_Menu extends ProPanel{
+public class Panel_Menu extends Panel_Base{
     Panel_Menu(){
         this.setLayout(new GridLayout(2, 2));
         //subir.setSize(100, 40);
