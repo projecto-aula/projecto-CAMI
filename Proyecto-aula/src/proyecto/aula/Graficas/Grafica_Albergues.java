@@ -19,7 +19,8 @@ public class Grafica_Albergues extends JPanel{
     Animation anim = new PathTransition();
     JLabel aver = new JLabel("AVR");
     Grafica_Albergues(){
-        this.setBackground(Color.red);
+        aver.setHorizontalAlignment(JLabel.CENTER);
+        this.setBackground(Color.white);
         this.setLayout(new BorderLayout());
         this.add(aver, BorderLayout.CENTER);
     }

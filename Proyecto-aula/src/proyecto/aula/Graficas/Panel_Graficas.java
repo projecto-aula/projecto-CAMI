@@ -64,9 +64,12 @@ public class Panel_Graficas extends Panel_Base {
         @Override
         public void mouseClicked(MouseEvent e) {
             if (e.getSource().equals(titulo1)) {
-                Grafica_Albergues alb = new Grafica_Albergues();
-                panelPrincipal.add(alb, BorderLayout.CENTER);
+                Grafica_Albergues al = new Grafica_Albergues();
                 panelPrincipal.removeAll();
+                panelPrincipal.add(al, BorderLayout.CENTER);
+                JSeparator sep = new JSeparator(JSeparator.VERTICAL);
+                sep.setBackground(Color.DARK_GRAY);
+                panelPrincipal.add(sep, BorderLayout.WEST);
                 panelPrincipal.revalidate();
                 panelPrincipal.repaint();
             }else if(e.getSource().equals(titulo2)) {
@@ -108,12 +111,16 @@ public class Panel_Graficas extends Panel_Base {
         public void mouseEntered(MouseEvent e) {
             if (e.getSource().equals(titulo1)) {
                 titulo1.setBackground(Color.GRAY);
+                titulo1.setForeground(Color.white);
             }else if(e.getSource().equals(titulo2)) {
                 titulo2.setBackground(Color.GRAY);
+                titulo2.setForeground(Color.white);
             }else if(e.getSource().equals(titulo3)) {
                 titulo3.setBackground(Color.GRAY);
+                titulo3.setForeground(Color.white);
             }else if(e.getSource().equals(volver)) {
                 volver.setBackground(Color.GRAY);
+                volver.setForeground(Color.white);
             }
         }
 
@@ -121,12 +128,16 @@ public class Panel_Graficas extends Panel_Base {
         public void mouseExited(MouseEvent e) {
             if (e.getSource().equals(titulo1)) {
                 titulo1.setBackground(Color.white);
+                titulo1.setForeground(Color.black);
             }else if(e.getSource().equals(titulo2)) {
                 titulo2.setBackground(Color.white);
+                titulo2.setForeground(Color.black);
             }else if(e.getSource().equals(titulo3)) {
                 titulo3.setBackground(Color.white);
+                titulo3.setForeground(Color.black);
             }else if(e.getSource().equals(volver)) {
                 volver.setBackground(Color.white);
+                volver.setForeground(Color.black);
             }
         }
 
