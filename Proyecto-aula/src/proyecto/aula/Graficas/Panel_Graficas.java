@@ -42,6 +42,7 @@ public class Panel_Graficas extends Panel_Base {
         titulos.add(titulo1);
         titulos.add(titulo2);
         titulos.add(titulo3);
+        titulos.add(volver);
         anadirTitulos();//Hacemos todas las funciones para agregar los titulos
         panelPrincipal.setLayout(new BorderLayout());
         panelPrincipal.setBackground(Color.white);//Añadimos color al panel como una guia
@@ -56,7 +57,6 @@ public class Panel_Graficas extends Panel_Base {
         bienven2.setForeground(new Color(130, 130, 130));
 
         panelPrincipal.add(bienven2, BorderLayout.CENTER);
-        this.add(volver, BorderLayout.SOUTH);
         this.add(panelPrincipal, BorderLayout.CENTER);//Añadimos el panel donde iran las diferentes panels de graficas
     }
     private final MouseListener EscuchadorRaton = new MouseListener() {
@@ -64,24 +64,44 @@ public class Panel_Graficas extends Panel_Base {
         @Override
         public void mouseClicked(MouseEvent e) {
             if (e.getSource().equals(titulo1)) {
-                GraAlb.setBackground(Color.red);
+                Grafica_Albergues alb = new Grafica_Albergues();
+                panelPrincipal.add(alb, BorderLayout.CENTER);
                 panelPrincipal.removeAll();
-                panelPrincipal.add(GraAlb, BorderLayout.CENTER);
                 panelPrincipal.revalidate();
                 panelPrincipal.repaint();
             }else if(e.getSource().equals(titulo2)) {
                 GraAlb.setBackground(Color.green);
                 panelPrincipal.removeAll();
                 panelPrincipal.add(GraAlb, BorderLayout.CENTER);
+                JSeparator sep = new JSeparator(JSeparator.VERTICAL);
+                sep.setBackground(Color.DARK_GRAY);
+                panelPrincipal.add(sep, BorderLayout.WEST);
                 panelPrincipal.revalidate();
                 panelPrincipal.repaint();
             }else if(e.getSource().equals(titulo3)) {
                 GraAlb.setBackground(Color.blue);
                 panelPrincipal.removeAll();
                 panelPrincipal.add(GraAlb, BorderLayout.CENTER);
+                JSeparator sep = new JSeparator(JSeparator.VERTICAL);
+                sep.setBackground(Color.DARK_GRAY);
+                panelPrincipal.add(sep, BorderLayout.WEST);
+                panelPrincipal.revalidate();
+                panelPrincipal.repaint();
+            }else if(e.getSource().equals(volver)) {
+                GraAlb.setBackground(Color.white);
+                panelPrincipal.removeAll();
+                panelPrincipal.add(GraAlb, BorderLayout.CENTER);
+                JSeparator sep = new JSeparator(JSeparator.VERTICAL);
+                sep.setBackground(Color.DARK_GRAY);
+                panelPrincipal.add(sep, BorderLayout.WEST);
+                JLabel bienven2 = new JLabel("Da click en cualquiera de las opciones de la izquierda de la ventana");
+                bienven2.setHorizontalAlignment(JLabel.CENTER);
+                bienven2.setFont(fuente2);
+                bienven2.setForeground(new Color(130, 130, 130));
                 panelPrincipal.revalidate();
                 panelPrincipal.repaint();
             }
+            
         }
 
         @Override
@@ -92,6 +112,8 @@ public class Panel_Graficas extends Panel_Base {
                 titulo2.setBackground(Color.GRAY);
             }else if(e.getSource().equals(titulo3)) {
                 titulo3.setBackground(Color.GRAY);
+            }else if(e.getSource().equals(volver)) {
+                volver.setBackground(Color.GRAY);
             }
         }
 
@@ -103,12 +125,14 @@ public class Panel_Graficas extends Panel_Base {
                 titulo2.setBackground(Color.white);
             }else if(e.getSource().equals(titulo3)) {
                 titulo3.setBackground(Color.white);
+            }else if(e.getSource().equals(volver)) {
+                volver.setBackground(Color.white);
             }
         }
 
         @Override
         public void mousePressed(MouseEvent e) {
-
+            
         }
 
         @Override
@@ -121,7 +145,7 @@ public class Panel_Graficas extends Panel_Base {
      se agregara al panel principal en donde va su respectivo lugar*/
     private void anadirTitulos() {
         JPanel panel = new JPanel();//Establecemos un Jpanel donde posteriormente lo agregaremos a una respectiva layout
-        panel.setLayout(new GridLayout(3, 1));//Establecemos el layout del panel
+        panel.setLayout(new GridLayout(4, 1));//Establecemos el layout del panel
         for(Object e: titulos){
             JButton title = (JButton)e;
             title.addMouseListener(EscuchadorRaton);
@@ -140,7 +164,6 @@ public class Panel_Graficas extends Panel_Base {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         g2.setColor(Color.red);
-
     }
 
     /**
