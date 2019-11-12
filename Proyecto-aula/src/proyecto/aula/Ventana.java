@@ -35,7 +35,7 @@ public class Ventana extends JFrame{
     //de la clase
     Ventana(String titulo){
         this.setTitle(titulo);
-        this.setResizable(true);//Para que no pueda cambiar de tamano
+        this.setResizable(false);//Para que no pueda cambiar de tamano
         this.setSize(ancho, largo);//Establecemos tamano
         this.setLocationRelativeTo(null);//Para ponerla en el centro de la pantallla
         this.setMinimumSize(new Dimension(690, 400));

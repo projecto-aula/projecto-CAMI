@@ -5,23 +5,34 @@
  */
 package proyecto.aula.Graficas;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import javax.swing.*;
-import javafx.animation.Animation;
-import javafx.animation.PathTransition;
+import javafx.animation.TranslateTransition;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.*;
+import javafx.util.Duration;
 
 /**
  *
  * @author Equipo 4
  */
-public class Grafica_Albergues extends JPanel{
-    Animation anim = new PathTransition();
-    JLabel aver = new JLabel("AVR");
-    Grafica_Albergues(){
-        aver.setHorizontalAlignment(JLabel.CENTER);
-        this.setBackground(Color.white);
-        this.setLayout(new BorderLayout());
-        this.add(aver, BorderLayout.CENTER);
+public class Grafica_Albergues extends Thread{
+    
+    
+    
+    Grafica_Albergues() {
+
     }
+    
+    Grafica_Albergues(JFXPanel panel) {
+
+    }
+
+    
+    public void initFx(double ancho, double largo){
+        //this.setScene(createScene());
+    }
+
+    
 }
