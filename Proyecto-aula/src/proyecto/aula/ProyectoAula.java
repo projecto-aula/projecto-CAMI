@@ -8,6 +8,7 @@ package proyecto.aula;
 
 import javax.swing.JFrame;
 import proyecto.aula.Graficas.Panel_Graficas;
+import proyecto.aula.Sofia.Panel1;
 
 /**
  *
@@ -22,7 +23,9 @@ public class ProyectoAula {
         // TODO code application logic here
         Ventana vent = new Ventana("CAMI v1.0.0");
         vent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        vent.setEscena(new Panel_Graficas());
+        Panel1 panel = new Panel1();
+        Panel_Graficas g = new Panel_Graficas();
+        vent.setEscena(g);
         vent.setVisible(true);
     }
     

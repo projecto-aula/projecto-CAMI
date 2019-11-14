@@ -12,8 +12,6 @@ import javax.swing.*;
 import java.awt.Graphics2D;
 import java.awt.Graphics;
 import java.awt.GridLayout;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
@@ -21,8 +19,14 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.shape.*;
 import javafx.scene.text.Text;
+import javafx.animation.ScaleTransition;
 import javafx.animation.*;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.scene.input.InputEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
+import javax.swing.event.HyperlinkEvent;
 import proyecto.aula.*;//Importamos ha este paquete las clases que se habian hecho hasta el momento
 //He decido manejar diferentes paquetes debido a que uno se puede perder con facilidad entre 
 //Todas las clases que se van a tener.
@@ -49,9 +53,6 @@ public class Panel_Graficas extends Panel_Base {
         this.setBackground(Color.white);//Establemos color de fondo
         this.setSize(800, 600);//establecemos tamaño del panel
         this.setLayout(new BorderLayout());//establecemos el tipo de layout que va a tener. Este es el verdadero layout principal
-        titulos.add(titulo1);
-        titulos.add(titulo2);
-        titulos.add(titulo3);
         titulos.add(volver);
         anadirTitulos();//Hacemos todas las funciones para agregar los titulos
         panelPrincipal.setLayout(new BorderLayout());
@@ -78,56 +79,81 @@ public class Panel_Graficas extends Panel_Base {
 
     private Scene createScene() {
         Group root = new Group();
-        Scene scene = new Scene(root, javafx.scene.paint.Color.ALICEBLUE);
-        Text text = new Text();
-
-        for (int i = 0; i < 10; i++) {
-            Arc arc = new Arc();
-            arc.setFill(javafx.scene.paint.Color.AQUA);
-            arc.setCenterX(100);
-            arc.setCenterY(100);
-            arc.setRadiusX(100);
-            arc.setRadiusY(100);
-            arc.setStartAngle(i * 10);
-            arc.setLength(i * 10);
-            arc.setType(ArcType.ROUND);
-            root.getChildren().add(arc);
-
-            FadeTransition ft = new FadeTransition(Duration.millis(4000), arc);
-            ft.setFromValue(0.0f);
-            ft.setToValue(1.0f);
-            ft.setCycleCount(1);
-            ft.setAutoReverse(false);
-
-            TranslateTransition tt = new TranslateTransition(Duration.millis(4500), arc);
-            tt.setFromX(0.0f);
-            tt.setFromY(150.0f);
-            tt.setToX(300);
-            tt.setCycleCount(1);
-            tt.setAutoReverse(false);
-
-            ParallelTransition pt;
-            pt = new ParallelTransition(arc, tt, ft);
-            pt.play();
-        }
-
-
-        /*
-         text.setX(40);
-         text.setY(100);
-         text.setFont(new javafx.scene.text.Font(25));
-         text.setText("Welcome JavaFX!");
-         */
-        root.getChildren().add(text);
+        Scene scene = new Scene(root, javafx.scene.paint.Color.WHITE);
+        annadirPartePastel(root);
 
         return (scene);
+    }
+
+    private void annadirPartePastel(Group root) {
+        Text text = new Text();
+        text.setX(400);
+        text.setY(300);
+        text.setFont(new javafx.scene.text.Font(15));
+        text.setFill(javafx.scene.paint.Color.GRAY);
+        text.setText("pasa el mouse por encima de las graficas");
+        root.getChildren().add(text);
+        Grafica_Albergues alb1 = new Grafica_Albergues("Albergues en alvaro obregon", 0, 40);
+        Grafica_Albergues alb2 = new Grafica_Albergues("Albergues en tangamandapio", 40 * (360/100) , 40);
+        Grafica_Albergues alb3 = new Grafica_Albergues("Albergues en aca", 80 * (360/100), 40);
+        ArrayList<Grafica_Albergues> alblist = new ArrayList();
+        alblist.add(alb1);
+        alblist.add(alb2);
+        alblist.add(alb3);
+        
+        for (int i = 0; i < alblist.size(); i++) {
+            Grafica_Albergues alb = alblist.get(i);
+            if((i + 1) % 2 == 0){
+                alb.setFill(javafx.scene.paint.Color.TOMATO);
+            }else if((i + 1) % 3 == 0){
+                alb.setFill(javafx.scene.paint.Color.AQUA);
+            }else{
+                alb.setFill(javafx.scene.paint.Color.ORANGE);
+            }
+            root.getChildren().add(alb);
+            
+            EventHandler entered = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent event) {
+                    text.setText(alb.getMensaje());
+                    FadeTransition ft = new FadeTransition(Duration.millis(50000), text);
+                    ft.setFromValue(0.0f);
+                    ft.setToValue(1.0f);
+                    ft.setCycleCount(1);
+                    ft.setAutoReverse(false);
+                    ScaleTransition scl = new ScaleTransition(Duration.millis(500), alb);
+                    scl.setToX(1.2f);
+                    scl.setToY(1.2f);
+                    scl.play();
+                    event.consume();
+                }
+
+            };
+            EventHandler exited = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent event) {
+                    text.setText("Pasa el mouse por encima de las graficas");
+                    ScaleTransition scl = new ScaleTransition(Duration.millis(500), alb);
+                    scl.setToX(1f);
+                    scl.setToY(1f);
+                    scl.play();
+                    event.consume();
+                }
+
+            };
+            alb.addEventHandler(MouseEvent.MOUSE_ENTERED, entered);
+            alb.addEventHandler(MouseEvent.MOUSE_EXITED, exited);
+            alb.init();
+        }
     }
 
     /*Basicamente este metodo creara un un panel que contendra un layaout. El panel que se a creado
      se agregara al panel principal en donde va su respectivo lugar*/
     private void anadirTitulos() {
         JPanel panel = new JPanel();//Establecemos un Jpanel donde posteriormente lo agregaremos a una respectiva layout
-        panel.setLayout(new GridLayout(2, 2));//Establecemos el layout del panel
+        panel.setLayout(new GridLayout(1, 1));//Establecemos el layout del panel
         for (Object e : titulos) {
             JButton title = (JButton) e;
             //title.addMouseListener(EscuchadorRaton);

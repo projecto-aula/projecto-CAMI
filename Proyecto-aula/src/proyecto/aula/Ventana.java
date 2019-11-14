@@ -24,7 +24,7 @@ a nuestro gusto.Solo vamos a cambiar de paneles con el metodo setEscena
 Por ende solo vamos a tenr una sola ventana*/
 public class Ventana extends JFrame{
     private String titulo;
-    private final int ancho = 800, largo = 600;
+    public int ancho = 800, largo = 600;
     private JPanel panelVent = new JPanel();
     //Es un contructor vacio de la clase
     Ventana(){
@@ -51,7 +51,7 @@ public class Ventana extends JFrame{
     se necesita poner un panel como argumento, de ahora en adelante no es necsario crear 
     una vantana, basta con crear el panel con sus respectivos elementos
     */
-    public void setEscena(Panel_Base panel_b){
+    public void setEscena(JPanel panel_b){
         panelVent.removeAll();
         panelVent.add(panel_b, BorderLayout.CENTER);
         panelVent.repaint();
