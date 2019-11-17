@@ -7,8 +7,10 @@ package proyecto.aula;
 
 
 import javax.swing.JFrame;
+import proyecto.aula.Derechos.Panel_Derechos;
 import proyecto.aula.Graficas.Panel_Graficas;
-import proyecto.aula.Sofia.Panel1;
+import modulosofia.*;
+
 
 /**
  *
@@ -21,12 +23,18 @@ public class ProyectoAula {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        Login log= new Login();
+        log.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        log.setVisible(true);
+        /*
         Ventana vent = new Ventana("CAMI v1.0.0");
         vent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Panel1 panel = new Panel1();
-        Panel_Graficas g = new Panel_Graficas();
-        vent.setEscena(g);
+        Panel_Derechos der = new Panel_Derechos();
+        vent.add(new Panel_Menu());
+        
         vent.setVisible(true);
+                */
     }
     
 }

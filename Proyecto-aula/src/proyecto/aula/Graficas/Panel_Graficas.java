@@ -12,21 +12,19 @@ import javax.swing.*;
 import java.awt.Graphics2D;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.shape.*;
 import javafx.scene.text.Text;
 import javafx.animation.ScaleTransition;
 import javafx.animation.*;
-import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.scene.input.InputEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
-import javax.swing.event.HyperlinkEvent;
 import proyecto.aula.*;//Importamos ha este paquete las clases que se habian hecho hasta el momento
 //He decido manejar diferentes paquetes debido a que uno se puede perder con facilidad entre 
 //Todas las clases que se van a tener.
@@ -53,12 +51,22 @@ public class Panel_Graficas extends Panel_Base {
         this.setBackground(Color.white);//Establemos color de fondo
         this.setSize(800, 600);//establecemos tamaño del panel
         this.setLayout(new BorderLayout());//establecemos el tipo de layout que va a tener. Este es el verdadero layout principal
+        volver.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Ventana vent = new Ventana("Panel Menu");
+                vent.add(new Panel_Menu());
+                vent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                vent.setVisible(true);
+            }
+        });
         titulos.add(volver);
         anadirTitulos();//Hacemos todas las funciones para agregar los titulos
         panelPrincipal.setLayout(new BorderLayout());
         panelPrincipal.setBackground(Color.white);//Añadimos color al panel como una guia
-        panelPrincipal.add(fxP, BorderLayout.CENTER);
         try {
+            panelPrincipal.add(fxP, BorderLayout.CENTER);
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
@@ -86,37 +94,69 @@ public class Panel_Graficas extends Panel_Base {
     }
 
     private void annadirPartePastel(Group root) {
+        //Este es el texto que se estara cambiando
         Text text = new Text();
-        text.setX(400);
+        //Poscison del texto y otros atributos
+        text.setX(200);
         text.setY(300);
         text.setFont(new javafx.scene.text.Font(15));
         text.setFill(javafx.scene.paint.Color.GRAY);
         text.setText("pasa el mouse por encima de las graficas");
         root.getChildren().add(text);
-        Grafica_Albergues alb1 = new Grafica_Albergues("Albergues en alvaro obregon", 0, 40);
-        Grafica_Albergues alb2 = new Grafica_Albergues("Albergues en tangamandapio", 40 * (360/100) , 40);
-        Grafica_Albergues alb3 = new Grafica_Albergues("Albergues en aca", 80 * (360/100), 40);
-        ArrayList<Grafica_Albergues> alblist = new ArrayList();
+        //Clase pastel para hacer las graficas
+        
+        Pastel_Albergues alb1 = new Pastel_Albergues("En Alvaro Obregon hay el ", 0, 5, 5);
+        Pastel_Albergues alb2 = new Pastel_Albergues("En Azcapotzalco hay el ", 5 , 2, 7);
+        Pastel_Albergues alb3 = new Pastel_Albergues("En Benito Juárez hay el ", 7, 5, 6);
+        Pastel_Albergues alb4 = new Pastel_Albergues("En Coyoacán hay el ", 12, 16, 1);
+        Pastel_Albergues alb5 = new Pastel_Albergues("En Cuauhtémoc hay el ", 28, 11, 3);
+        Pastel_Albergues alb6 = new Pastel_Albergues("En Cuaujimalpa hay el ", 39, 2, 5);
+        Pastel_Albergues alb7 = new Pastel_Albergues("En Tlalpan hay el ", 41 , 5, 7);
+        Pastel_Albergues alb8 = new Pastel_Albergues("En Miguel Hidalgo hay el ", 46, 11, 6);
+        Pastel_Albergues alb9 = new Pastel_Albergues("En Milpa Alta hay el ", 57, 2, 1);
+        Pastel_Albergues alb10 = new Pastel_Albergues("En Gustavo A. Madero hay el ", 59, 5, 3);
+        Pastel_Albergues alb11 = new Pastel_Albergues("En Iztacalco hay el ", 64, 12, 5);
+        Pastel_Albergues alb12 = new Pastel_Albergues("En Iztapalapa hay el ", 76 , 12, 7);
+        Pastel_Albergues alb13 = new Pastel_Albergues("En Magdalena Contreras hay el ", 88, 5, 6);
+        Pastel_Albergues alb14 = new Pastel_Albergues("En Tláhuac hay el ", 93, 5, 1);
+        Pastel_Albergues alb15 = new Pastel_Albergues("En Xochimilco hay el ", 98, 2, 3);
+        ArrayList<Pastel_Albergues> alblist = new ArrayList();
         alblist.add(alb1);
         alblist.add(alb2);
         alblist.add(alb3);
+        alblist.add(alb4);
+        alblist.add(alb5);
+        alblist.add(alb6);
+        alblist.add(alb7);
+        alblist.add(alb8);
+        alblist.add(alb9);
+        alblist.add(alb10);
+        alblist.add(alb11);
+        alblist.add(alb12);
+        alblist.add(alb13);
+        alblist.add(alb14);
+        alblist.add(alb15);
         
         for (int i = 0; i < alblist.size(); i++) {
-            Grafica_Albergues alb = alblist.get(i);
+            Pastel_Albergues alb = alblist.get(i);
+            //Establecemos que colores vamos a querer para las graficas
             if((i + 1) % 2 == 0){
                 alb.setFill(javafx.scene.paint.Color.TOMATO);
             }else if((i + 1) % 3 == 0){
                 alb.setFill(javafx.scene.paint.Color.AQUA);
+            }else if((i + 1) % 5 == 0){
+                alb.setFill(javafx.scene.paint.Color.DEEPSKYBLUE);    
             }else{
                 alb.setFill(javafx.scene.paint.Color.ORANGE);
             }
+            //Lo añadimos como tal al fxP
             root.getChildren().add(alb);
-            
+            //añadimos unos eventos para el mouse de la grafica
             EventHandler entered = new EventHandler<MouseEvent>() {
 
                 @Override
                 public void handle(MouseEvent event) {
-                    text.setText(alb.getMensaje());
+                    text.setText(alb.getMensaje() + alb.getPorcentaje() + "% de los albergues en la ciudad de México");
                     FadeTransition ft = new FadeTransition(Duration.millis(50000), text);
                     ft.setFromValue(0.0f);
                     ft.setToValue(1.0f);
@@ -147,6 +187,7 @@ public class Panel_Graficas extends Panel_Base {
             alb.addEventHandler(MouseEvent.MOUSE_EXITED, exited);
             alb.init();
         }
+        
     }
 
     /*Basicamente este metodo creara un un panel que contendra un layaout. El panel que se a creado

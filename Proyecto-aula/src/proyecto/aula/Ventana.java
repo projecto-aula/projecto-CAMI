@@ -18,22 +18,25 @@ import javax.swing.*;
  */
 
 /*Esta es la clase ventana esta es una de las importantes
-pue snos permite elborar una ventana, es una extension de JFrame.
-Es asi por que podemos sobrecargas metodos de la clase original, y manipularla
-a nuestro gusto.Solo vamos a cambiar de paneles con el metodo setEscena 
-Por ende solo vamos a tenr una sola ventana*/
-public class Ventana extends JFrame{
+ pue snos permite elborar una ventana, es una extension de JFrame.
+ Es asi por que podemos sobrecargas metodos de la clase original, y manipularla
+ a nuestro gusto.Solo vamos a cambiar de paneles con el metodo setEscena 
+ Por ende solo vamos a tenr una sola ventana*/
+public class Ventana extends JFrame {
+
     private String titulo;
     public int ancho = 800, largo = 600;
     private JPanel panelVent = new JPanel();
+
     //Es un contructor vacio de la clase
-    Ventana(){
-        
+
+    Ventana() {
+
     }
 
     //Es un constructor para estalbecer el titilo 
     //de la clase
-    Ventana(String titulo){
+    public Ventana(String titulo) {
         this.setTitle(titulo);
         this.setResizable(false);//Para que no pueda cambiar de tamano
         this.setSize(ancho, largo);//Establecemos tamano
@@ -41,24 +44,27 @@ public class Ventana extends JFrame{
         this.setMinimumSize(new Dimension(690, 400));
         Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/imagenes/icono.png"));//LLamamos al icono 
         setIconImage(image); //Establecemos el icono del programa
-        panelVent.setLayout(new BorderLayout());
+        panelVent.setLayout(null);
         //Panel_Graficas panel = new Panel_Graficas();
         this.add(panelVent);
     }
-    
+
     /*Esta es un metodo importante, pues nos permite establecer un panel 
-    en especifico para cambiar de paneles y cambiar de escenas, unicamente 
-    se necesita poner un panel como argumento, de ahora en adelante no es necsario crear 
-    una vantana, basta con crear el panel con sus respectivos elementos
-    */
-    public void setEscena(JPanel panel_b){
-        panelVent.removeAll();
-        panelVent.add(panel_b, BorderLayout.CENTER);
-        panelVent.repaint();
-        panelVent.revalidate();
+     en especifico para cambiar de paneles y cambiar de escenas, unicamente 
+     se necesita poner un panel como argumento, de ahora en adelante no es necsario crear 
+     una vantana, basta con crear el panel con sus respectivos elementos
+     */
+    public void setEscena(JPanel panel_b) {
+        try {
+            panelVent.removeAll();
+            panelVent.add(panel_b);
+            panelVent.repaint();
+            panelVent.revalidate();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
-    
-    
+
     /*Aqui en adelante son los getters and setters de la clase*/
     public String getTitulo() {
         return titulo;

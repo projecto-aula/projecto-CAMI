@@ -24,26 +24,28 @@ import javafx.util.Duration;
  *
  * @author Equipo 4
  */
-public class Grafica_Albergues extends Arc{
+public class Pastel_Albergues extends Arc{
     private String mensaje;
     private double strangle;
-    private double percent;
+    private double porcentaje;
+    private final int cant;
     
     
-    Grafica_Albergues(String mensaje, double strangle, double percent) {
+    Pastel_Albergues(String mensaje, double strangle, double porcentaje, int cant) {
         this.mensaje = mensaje;
         this.strangle = strangle;
-        this.percent = percent;
+        this.porcentaje = porcentaje;
+        this.cant = cant;
     }
     
     public void init(){
         
             this.setCenterX(0);
-            this.setCenterY(100);
+            this.setCenterY(140);
             this.setRadiusX(100);
             this.setRadiusY(100);
-            this.setStartAngle(strangle);
-            this.setLength(percent * (360/100));
+            this.setStartAngle(strangle * 3.6f);
+            this.setLength((porcentaje * 360)/100);
             this.setType(ArcType.ROUND);
             
             FadeTransition ft = new FadeTransition(Duration.millis(5000), this);
@@ -79,4 +81,24 @@ public class Grafica_Albergues extends Arc{
     public void setAngle(double angle) {
         this.strangle = angle;
     } 
+
+    public int getCant() {
+        return cant;
+    }
+
+    public double getStrangle() {
+        return strangle;
+    }
+
+    public void setStrangle(double strangle) {
+        this.strangle = strangle;
+    }
+
+    public double getPorcentaje() {
+        return porcentaje;
+    }
+
+    public void setPorcentaje(double porcentaje) {
+        this.porcentaje = porcentaje;
+    }
 }

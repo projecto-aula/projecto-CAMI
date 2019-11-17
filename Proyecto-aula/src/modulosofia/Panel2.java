@@ -1,11 +1,11 @@
-package proyecto.aula.sofia;
+package modulosofia;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 public class Panel2 extends JPanel {
-    
+    Boolean animacion=false;
     public Panel2(){
         
         
@@ -24,9 +24,9 @@ public class Panel2 extends JPanel {
     ActionListener oyente1 = new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            Panel1 obj = new Panel1();
-            obj.inicio();
             
+            
+            animacion = true;
         }
     };
     
@@ -34,8 +34,8 @@ public class Panel2 extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("Se esta pudiendo..");
-        JButton boton1 = new JButton("OPCION 1");
-        boton1.setBounds(20,10,230,60);
+            JButton boton1 = new JButton("OPCION 1");
+            boton1.setBounds(20,10,230,60);
         
  
         }
@@ -47,7 +47,7 @@ public class Panel2 extends JPanel {
         }
     };
     public void componentes(){
-        JButton boton1 = new JButton("OPCION 1");
+        JButton boton1 = new JButton("AQUI ES");
         boton1.setBounds(20,10,230,60);
         add(boton1); 
         boton1.addActionListener(oyente1);

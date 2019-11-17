@@ -1,4 +1,4 @@
-package proyecto.aula.sofia;;
+package modulosofia;
 import java.awt.*;
 import javax.swing.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
