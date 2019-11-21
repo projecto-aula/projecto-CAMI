@@ -8,7 +8,7 @@ package proyecto.aula;
 import proyecto.aula.Panel_Menu;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import proyecto.aula.Derechos.Panel_Derechos;
+import proyecto.aula.Derechos.*;
 import proyecto.aula.Administrador;
 import proyecto.aula.Administrador;
 import proyecto.aula.Ventana;
@@ -191,9 +191,9 @@ public class Login1 extends javax.swing.JFrame {
         
         
         if(!(jtf_nombre_login.getText() == null)||!(jtf_contraseña_login.getText()==null)){
-           Ventana vent = new Ventana("CAMI v1.0.0");
+        Ventana vent = new Ventana("CAMI v1.0.0");
         vent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Panel_Derechos der = new Panel_Derechos();
+        //P der = new P();
         vent.add(new Panel_Menu());
         
         vent.setVisible(true); 

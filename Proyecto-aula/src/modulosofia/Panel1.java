@@ -1,4 +1,4 @@
-package modulosofia;
+    package modulosofia;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -6,11 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class Panel1 extends JPanel implements Runnable{
-    Image img;
-    int x= getWidth()/2;
+    
     Thread hilo;
-    int incremento = 0;
-    Panel2 objeto = new Panel2();
     
     public Panel1(){
         //establecemos el color del panel
@@ -23,6 +20,7 @@ public class Panel1 extends JPanel implements Runnable{
         
         
         hilo = new Thread(this);
+        
         //hilo.start();
         Animaciones();
         
@@ -43,7 +41,7 @@ public class Panel1 extends JPanel implements Runnable{
         instrucciones.setBounds(100,100, 200, 20);
         JLabel opcion1 = new JLabel("1.-Ir por la selva");
         opcion1.setBounds(100,100, 100, 20);
-        JButton boton1 = new JButton("Iniciar");
+        JButton boton1 = new JButton("INICIAR");
         boton1.setBounds(0,0,100,30);
          
         boton1.addActionListener(oyente1);
@@ -62,11 +60,15 @@ public class Panel1 extends JPanel implements Runnable{
         JLabel label2 = new JLabel("Algo");
         label2.setBounds(100,100, 100, 20);
         
+        JButton op1 = new JButton();
+        op1.setBounds(0,430,200,50);
+        // Image img1 = new ImageIcon(getClass().getResource("fondo01.png")).getImage();
+        add(op1);
         add(opcion1);
         add(instrucciones);
         add(label2);
         add(boton1);
-        
+        //add(boton2);
         add(label0);
         
         //add(label); 
@@ -97,15 +99,14 @@ public class Panel1 extends JPanel implements Runnable{
         try {
             
             g.setColor(getBackground());
-            g.fillRect(0, 0, getWidth(), getHeight());
-            
-            
+            g.fillRect(0, 0, 755, 400);
             //ANIMACION 1 **********************************************************************************
             //texto
+            
             g.setColor(Color.black);
             g.setFont( new Font( "Monospaced", Font.ITALIC, 13 ) );
             g.drawString( "Ella es Sofía, su país presenta una situación económica difícil, ya que", 120, 20 );
-            g.drawString( "se presenta una alza a los precios en la cnasta básica, además de que los ", 120, 40 );
+            g.drawString( "se presenta una alza a los precios en la canasta básica, además de que los ", 120, 40 );
               g.drawString( "trabajos se hacen cada vez más escasos y peor remunerados", 120, 60 );
             //componentes de sofia
             //cara
@@ -270,6 +271,7 @@ public class Panel1 extends JPanel implements Runnable{
             polygonc3.addPoint( x83, y83 );//figura 83
             g.fillPolygon( polygonc3 );
             //auto
+            
             g.setColor(Color.red);
             Polygon polygonc4 = new Polygon();
             polygonc4.addPoint( x84, y84 );//figura 84
@@ -501,6 +503,7 @@ public class Panel1 extends JPanel implements Runnable{
                     repaint();
                     
                 }
+                
                 while(y14<170){
                     Thread.sleep(2);
                     y14+=10;
@@ -1203,6 +1206,7 @@ public class Panel1 extends JPanel implements Runnable{
                     y75a+=10;
                     repaint();
                 }
+                
                 //Animacion 2 ****************************************************
                 /*
                 while(x75<240){
@@ -1716,6 +1720,7 @@ public class Panel1 extends JPanel implements Runnable{
                 }
 */
                 //ANIMACION 3****************************************************************************************************
+                
                 while(x98<300){
                     Thread.sleep(2);
                     x98+=1;
@@ -1814,9 +1819,8 @@ public class Panel1 extends JPanel implements Runnable{
                     Thread.sleep(2);
                     y106+=1;
                     repaint();
-                }
-               
                 
+                }
                 //otras cosas
                 
                

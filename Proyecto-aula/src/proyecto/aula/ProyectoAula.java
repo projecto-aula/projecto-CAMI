@@ -7,7 +7,7 @@ package proyecto.aula;
 
 
 import javax.swing.JFrame;
-import proyecto.aula.Derechos.Panel_Derechos;
+import proyecto.aula.Derechos.*;
 import proyecto.aula.Graficas.Panel_Graficas;
 import modulosofia.*;
 
@@ -30,7 +30,7 @@ public class ProyectoAula {
         /*
         Ventana vent = new Ventana("CAMI v1.0.0");
         vent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Panel_Derechos der = new Panel_Derechos();
+        Principal der = new Principal();
         vent.add(new Panel_Menu());
         
         vent.setVisible(true);

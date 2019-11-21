@@ -5,8 +5,9 @@
  */
 package proyecto.aula;
 
+import Encuestas.Encuestas;
 import javax.swing.JFrame;
-import proyecto.aula.Derechos.Panel_Derechos;
+import proyecto.aula.Derechos.*;
 import proyecto.aula.Graficas.Panel_Graficas;
 import modulosofia.*;
 
@@ -116,16 +117,20 @@ public class Panel_Menu extends javax.swing.JPanel {
         // TODO add your handling code here:
         Ventana vent = new Ventana("Panel juego sofia");
         vent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        vent.add(new Panel1());
+        vent.add(new Panel2());
         vent.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        Ventana vent = new Ventana("Panel Derechos");
-        vent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        vent.add(new Panel_Derechos());
-        vent.setVisible(true);
+        try {
+            Ventana vent = new Ventana("Panel Derechos");
+            vent.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            vent.add(new Derechos());
+            vent.setVisible(true);     
+        } catch (Exception e) {
+            System.out.println("Algo anda mal: " + e.getMessage());
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

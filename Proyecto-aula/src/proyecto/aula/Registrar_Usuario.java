@@ -162,11 +162,7 @@ public class Registrar_Usuario extends javax.swing.JFrame {
 
     private void jtf_nombre_registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_nombre_registroActionPerformed
         String nombre;
-        nombre = jtf_nombre_registro.getText();       
-        
-        
-        
-        
+        nombre = jtf_nombre_registro.getText();           
         
     }//GEN-LAST:event_jtf_nombre_registroActionPerformed
 
@@ -179,7 +175,7 @@ public class Registrar_Usuario extends javax.swing.JFrame {
 
     private void jtf_contraseña_registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_contraseña_registroActionPerformed
         String contraseña;
-        contraseña = jtf_contraseña_registro.getText();
+        contraseña = jtf_contraseña_registro.getPassword().toString();
     }//GEN-LAST:event_jtf_contraseña_registroActionPerformed
 
     private void jtf_edad_registroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtf_edad_registroKeyTyped

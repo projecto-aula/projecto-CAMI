@@ -9,13 +9,6 @@ import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
-import javafx.embed.swing.JFXPanel;
-import javafx.event.EventHandler;
-import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.ArcType;
 import javafx.util.Duration;
@@ -42,8 +35,8 @@ public class Pastel_Albergues extends Arc{
         
             this.setCenterX(0);
             this.setCenterY(140);
-            this.setRadiusX(100);
-            this.setRadiusY(100);
+            this.setRadiusX(90);
+            this.setRadiusY(90);
             this.setStartAngle(strangle * 3.6f);
             this.setLength((porcentaje * 360)/100);
             this.setType(ArcType.ROUND);

@@ -89,13 +89,15 @@ public class Panel_Graficas extends Panel_Base {
         Group root = new Group();
         Scene scene = new Scene(root, javafx.scene.paint.Color.WHITE);
         annadirPartePastel(root);
+        annadirParteMigrantes(root, 500);
+        
 
         return (scene);
     }
 
+    private Text text = new Text();
     private void annadirPartePastel(Group root) {
         //Este es el texto que se estara cambiando
-        Text text = new Text();
         //Poscison del texto y otros atributos
         text.setX(200);
         text.setY(300);
@@ -189,6 +191,70 @@ public class Panel_Graficas extends Panel_Base {
         }
         
     }
+    
+    private void annadirParteMigrantes(Group root, float alfinal){
+        
+        Migrantes m1 = new Migrantes("En 2009 habian 31,002 migrantes", (31f), 0, alfinal);
+        Migrantes m2 = new Migrantes("En 2010 habian 32,001 migrantes", (32.01f), 21, alfinal);
+        Migrantes m3 = new Migrantes("En 2011 habian 34,004 migrantes", (34.1f), 42, alfinal);
+        Migrantes m4 = new Migrantes("En 2012 habian 41,010 migrantes", (41.01f), 63, alfinal);
+        Migrantes m5 = new Migrantes("En 2013 habian 49,700 migrantes", (49.7f), 84, alfinal);
+        Migrantes m6 = new Migrantes("En 2014 habian 55,380 migrantes", (55.38f), 105, alfinal);
+        Migrantes m7 = new Migrantes("En 2015 habian 32,051 migrantes", (32.05f), 126, alfinal);
+        Migrantes m8 = new Migrantes("En 2016 habian 31,001 migrantes", (31.001f), 147, alfinal);
+        
+        ArrayList m = new ArrayList();
+        m.add(m1);
+        m.add(m2);
+        m.add(m3);
+        m.add(m4);
+        m.add(m5);
+        m.add(m6);
+        m.add(m7);
+        m.add(m8);
+        for (int i = 0; i < m.size(); i++) {
+            Migrantes alb = (Migrantes)m.get(i);
+            //Lo añadimos como tal al fxP
+            root.getChildren().add(alb);
+            //añadimos unos eventos para el mouse de la grafica
+            EventHandler entered = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent event) {
+                    text.setText(alb.getMensaje());
+                    FadeTransition ft = new FadeTransition(Duration.millis(50000), text);
+                    ft.setFromValue(0.0f);
+                    ft.setToValue(1.0f);
+                    ft.setCycleCount(1);
+                    ft.setAutoReverse(false);
+                    ScaleTransition scl = new ScaleTransition(Duration.millis(500), alb);
+                    scl.setToX(1.2f);
+                    scl.setToY(1.2f);
+                    scl.play();
+                    event.consume();
+                }
+
+            };
+            EventHandler exited = new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent event) {
+                    text.setText("Pasa el mouse por encima de las graficas");
+                    ScaleTransition scl = new ScaleTransition(Duration.millis(500), alb);
+                    scl.setToX(1f);
+                    scl.setToY(1f);
+                    scl.play();
+                    event.consume();
+                }
+
+            };
+            alb.addEventHandler(MouseEvent.MOUSE_ENTERED, entered);
+            alb.addEventHandler(MouseEvent.MOUSE_EXITED, exited);
+            alb.init();
+        }
+    }
+    
+
 
     /*Basicamente este metodo creara un un panel que contendra un layaout. El panel que se a creado
      se agregara al panel principal en donde va su respectivo lugar*/
